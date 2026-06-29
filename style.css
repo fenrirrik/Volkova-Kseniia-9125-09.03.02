@@ -266,6 +266,7 @@ body {
     margin-bottom: 50px;
 }
 
+/* десктоп — марка через <img> в html (stamp-bg) */
 .project-card {
     position: sticky;
     top: 80px;
@@ -278,6 +279,8 @@ body {
     overflow: hidden;
 }
 
+/* на десктопе stamp-bg — абсолютная картинка.
+   на мобиле она скрыта и марка идёт через background-image карточки */
 .stamp-bg {
     position: absolute;
     top: 60px;
@@ -290,7 +293,6 @@ body {
     z-index: 1;
 }
 
-/* project-inner — обёртка контента поверх марки */
 .project-inner {
     position: relative;
     z-index: 2;
@@ -496,7 +498,7 @@ body {
 }
 
 /* ================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
+   МОБИЛЬНАЯ АДАПТАЦИЯ — 768px
    ================================================ */
 
 @media (max-width: 768px) {
@@ -522,9 +524,7 @@ body {
         justify-content: center;
     }
 
-    .nav a {
-        font-size: 15px;
-    }
+    .nav a { font-size: 15px; }
 
     /* --- HERO --- */
 
@@ -575,34 +575,35 @@ body {
         padding: 50px 20px 40px;
     }
 
+    /* убираем отрицательные margin — они ломают мобильную верстку */
     .about-title {
         font-size: 72px;
         margin-left: 0;
-        margin-bottom: -30px;
+        margin-bottom: 20px;
         text-align: center;
     }
 
     .about-note {
-        margin-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 20px;
     }
 
     .note-image {
         width: 100%;
         max-width: 100%;
+        position: static;
         top: 0;
     }
 
     .about-bottom-text {
         font-size: 14px;
         max-width: 100%;
-        margin-top: -80px;
+        margin-top: 0;
         padding: 0 10px;
         text-align: center;
     }
 
-    .about-transition {
-        height: 60px;
-    }
+    .about-transition { height: 60px; }
 
     /* --- SKILLS --- */
 
@@ -620,9 +621,7 @@ body {
         padding: 40px 0 0 20px;
     }
 
-    .skills-board {
-        display: none;
-    }
+    .skills-board { display: none; }
 
     .skills-items {
         position: relative;
@@ -638,25 +637,13 @@ body {
         top: auto !important;
     }
 
-    .num {
-        font-size: 60px;
-        min-width: 70px;
-    }
-
-    .skill-text {
-        font-size: 20px;
-        width: auto;
-    }
-
-    .skills-projects-transition {
-        height: 80px;
-    }
+    .num { font-size: 60px; min-width: 70px; }
+    .skill-text { font-size: 20px; width: auto; }
+    .skills-projects-transition { height: 80px; }
 
     /* --- PROJECTS --- */
 
-    .projects {
-        padding: 40px 0 60px;
-    }
+    .projects { padding: 40px 0 60px; }
 
     .projects-title {
         font-size: 72px;
@@ -665,36 +652,44 @@ body {
         margin-bottom: 20px;
     }
 
-    /* карточка теперь просто относительный контейнер */
+    /*
+     * МАРКА ЧЕРЕЗ background-image — самое надёжное решение.
+     * stamp-bg (<img>) скрыт. Фон растягивается автоматически
+     * вместе с высотой карточки (background-size: 100% 100%).
+     */
     .project-card {
         position: relative;
         height: auto;
+        top: auto;
         width: 92%;
         max-width: 420px;
-        padding: 0;
         margin: 0 auto 32px;
+        padding: 0;
         overflow: visible;
         box-sizing: border-box;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
-    /* марка — абсолютная, растягивается под project-inner */
-    .stamp-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: none;
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
+    .project-card-1 {
+        background-image: url("Group2.png");
+        margin-top: 0;
         z-index: 1;
-        pointer-events: none;
     }
 
-    /* project-inner задаёт реальную высоту карточки */
+    .project-card-2 {
+        background-image: url("Group6.png");
+        z-index: 2;
+    }
+
+    /* скрываем <img> марки — она больше не нужна на мобиле */
+    .stamp-bg { display: none; }
+
     .project-inner {
         position: relative;
         z-index: 2;
-        padding: 48px 14px 22px 14px;
+        padding: 48px 14px 24px 14px;
         height: auto;
     }
 
@@ -721,19 +716,10 @@ body {
         min-width: 0;
     }
 
-    .project-info {
-        min-width: 0;
-    }
+    .project-info { min-width: 0; }
 
-    .project-label {
-        font-size: 16px;
-        white-space: nowrap;
-    }
-
-    .project-name {
-        font-size: 12px;
-        white-space: nowrap;
-    }
+    .project-label { font-size: 16px; white-space: nowrap; }
+    .project-name  { font-size: 12px; white-space: nowrap; }
 
     .project-btn {
         font-size: 12px;
@@ -757,11 +743,7 @@ body {
         margin-top: 0;
     }
 
-    .project-big {
-        width: 60%;
-        height: 100%;
-        flex-shrink: 0;
-    }
+    .project-big { width: 60%; height: 100%; flex-shrink: 0; }
 
     .project-big img {
         width: 100%;
@@ -770,13 +752,7 @@ body {
         border-radius: 12px;
     }
 
-    .project-small {
-        width: 40%;
-        height: 100%;
-        flex-direction: column;
-        gap: 8px;
-        flex-shrink: 0;
-    }
+    .project-small { width: 40%; height: 100%; flex-direction: column; gap: 8px; flex-shrink: 0; }
 
     .project-small img {
         width: 100%;
@@ -793,10 +769,7 @@ body {
         align-items: flex-start;
     }
 
-    .contact::before {
-        width: 180px;
-        height: 180px;
-    }
+    .contact::before { width: 180px; height: 180px; }
 
     .contact-content {
         width: 100%;
@@ -805,20 +778,11 @@ body {
         gap: 40px;
     }
 
-    .contact-title {
-        font-size: 72px;
-        line-height: 0.9;
-    }
+    .contact-title { font-size: 72px; line-height: 0.9; }
 
-    .contact-form-wrap {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
+    .contact-form-wrap { width: 100%; height: auto; position: relative; }
 
-    .contact-sticker {
-        display: none;
-    }
+    .contact-sticker { display: none; }
 
     .contact-form {
         position: static;
@@ -836,9 +800,7 @@ body {
         border-width: 2px;
     }
 
-    .contact-form textarea {
-        height: 110px;
-    }
+    .contact-form textarea { height: 110px; }
 
     .contact-form button {
         width: 130px;
@@ -855,19 +817,17 @@ body {
 @media (max-width: 480px) {
 
     .header { padding: 8px 0; }
-
     .nav { gap: 16px; padding: 0 10px; }
     .nav a { font-size: 13px; }
 
     .hero { padding-top: 55px; }
     .hero-title { font-size: 38px; top: 62px; }
     .hero-girl { width: 250px !important; }
-
     .contact-btn { width: 190px; height: 60px; font-size: 18px; bottom: 12%; }
     .hero-description { font-size: 12px; bottom: 3%; }
 
     .about-title { font-size: 58px; }
-    .about-bottom-text { font-size: 12px; margin-top: -50px; }
+    .about-bottom-text { font-size: 12px; }
 
     .skills-title { font-size: 58px; }
     .num { font-size: 48px; min-width: 55px; }
