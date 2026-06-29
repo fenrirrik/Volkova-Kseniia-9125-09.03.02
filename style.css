@@ -661,8 +661,9 @@ body {
         position: relative;
         height: auto;
         top: auto;
-        width: 92%;
-        max-width: 420px;
+        /* растягиваем карточку на весь экран с небольшими отступами */
+        width: 94%;
+        max-width: none;
         margin: 0 auto 32px;
         padding: 0;
         overflow: visible;
@@ -689,7 +690,8 @@ body {
     .project-inner {
         position: relative;
         z-index: 2;
-        padding: 48px 14px 24px 14px;
+        /* отступ сверху — место под зубчики марки сверху */
+        padding: 52px 20px 28px 20px;
         height: auto;
     }
 
@@ -700,10 +702,10 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         padding: 0;
-        margin-bottom: 12px;
-        gap: 8px;
+        margin-bottom: 14px;
+        gap: 10px;
     }
 
     .project-left {
@@ -711,19 +713,19 @@ body {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         flex-shrink: 1;
         min-width: 0;
     }
 
     .project-info { min-width: 0; }
 
-    .project-label { font-size: 16px; white-space: nowrap; }
-    .project-name  { font-size: 12px; white-space: nowrap; }
+    .project-label { font-size: 18px; white-space: nowrap; }
+    .project-name  { font-size: 13px; white-space: nowrap; }
 
     .project-btn {
-        font-size: 12px;
-        padding: 6px 12px;
+        font-size: 13px;
+        padding: 7px 14px;
         border-width: 2px;
         margin-right: 0;
         white-space: nowrap;
@@ -737,7 +739,7 @@ body {
         z-index: 2;
         display: flex;
         flex-direction: row;
-        height: 170px;
+        height: 180px;
         padding: 0;
         gap: 8px;
         margin-top: 0;
